@@ -83,7 +83,7 @@ function Dayaben_Ki_Garba_Shopping(){
     document.getElementById("shopping_bill").innerHTML = `<h2>Garba Shopping Bill</h2> <h4>Chaniya Choli: <h4> <p> ${chaniya_choli} <p> <h4>Dandiya: <h4> <p> ${dandiya} <p> <h4>ornametnts: <h4> <p> ${ornametnts} <p> <h4>dandiya_shoes: <h4> <p> ${dandiya_shoes} <p> <h4>Total: ${total} </h4><h4>gst: ${gst} </h4><h4> Total ammount: ${bill}</h4> `
     
     if(bill > 1000){
-        console.log("Dayaben ki Garba Shopping Successfull");
+        document.write("<br>Dayaben ki Garba Shopping Successfull");
     }
 }
 
@@ -99,7 +99,8 @@ function Popatlal_Ka_Shaadi_Fund(){
     document.getElementById("shadi_fund").innerHTML = `<h2>Popatlal Ka Shaadi Fund</h2> <h4>Interest: ${intrest} </h4><h4>Total Payable amount: ${totalAmount} </h4>`
 
    if(totalAmount > 50000){
-      console.log("Shadi Fix kar lo Popatlal!");
+      document.write("<h2>Society Ki Khushi Ka Raaz!</h2>")
+      document.write("Shadi Fix kar lo Popatlal!");
    }
 }
 
@@ -115,7 +116,7 @@ function Taarak_Mehta_Ki_Bonus_Calculation(){
     document.getElementById("bonuscalculation").innerHTML = `<h2>Taarak Mehta Ki Bonus Calculation</h2> <h4>Basic Salary: ${basic_salary} </h4> <h4>Gross Salary: ${gross_salary} </h4> <h4>Net Salary: ${net_salary} </h4>`
 
     if(net_salary > basic_salary){
-        console.log("Tarak Mehta Ka Balance Perfect hai!");
+        document.write("<br>Tarak Mehta Ka Balance Perfect hai!");
     }
 }
 
