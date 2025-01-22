@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+@import url('https://use.fontawesome.com/releases/v6.5.1/css/all.css');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    background-color: #25242E;
+}
+
+@property --a {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.box {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background: repeating-conic-gradient(from var(--a),
+        #ff2770 0%,
+        #ff2770 5%,
+        transparent 5%,
+        transparent 40%,
+        #ff2770 50%
+    );
+    filter: drop-shadow(0 15px 50px #000);
+    border-radius: 20px;
+    animation: rotating 4s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+@keyframes rotating {
+    0% {
+        --a: 0deg;
+    }
+    100% {
+        --a: 360deg;
+    }
+}
+
+.box::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-conic-gradient(from var(--a),
+    #45f3ff 0%,
+    #45f3ff 5%,
+    transparent 5%,
+    transparent 40%,
+    #45f3ff 50%
+    );
+    filter: drop-shadow(0 15px 50px #000);
+    border-radius: 20px;
+    animation: rotating 4s linear infinite;
+    animation-delay: -1s;
+}
+
+.box::after{
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #2d2d39;
+    border-radius: 15px;
+    border: 8px solid #25252b;
+}
+
+.box:hover{
+    width: 450px;
+    height: 500px;
+}
+
+.box:hover .resetpw{
+    inset: 50px;
+}
+
+.box:hover .resetpwBx{
+    transform: translateY(0px);
+}
+
+.resetpw{
+    position: absolute;
+    inset: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #00000033;
+    color: #fff;
+    z-index: 1000;
+    box-shadow: inset 0 10px 20px #00000080;
+    border-bottom: 2px solid #ffffff80;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.resetpwBx{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    transform: translateY(126px);
+    transition: 0.5s;
+    background-color: transparent;
+}
+
+h2{
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    display: flex;
+    background-color: transparent;
+    padding-top: 1%;
+}
+
+h2 i{
+    color: #ff2770;
+    text-shadow: 0 0 5px #ff2770,
+                 0 0 20px #ff2770;
+}
+
+input{
+    width: 80%;
+    padding: 5px 20px;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    background: #0000001a;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+input::placeholder{
+    color: #999;
+}
+
+input[type="submit"]{
+    background: #45f3ff;
+    border: none;
+    font-weight: 500;
+    color: #111;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 0 10px #45f3ff,
+                0 0 60px #45f3ff;
+}
+
+.group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.group a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.group a:nth-child(2){
+    color: #ff2770;
+    font-weight: 600;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="box">
+            <div class="resetpw">
+                <div class="resetpwBx">
+                    <h2>
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Reset<br>Password
+                        <i class="fa-solid fa-heart"></i>
+                    </h2>
+                    <form action="#" id="submitform">
+                        <input type="password" placeholder="Enter Old Password" id="old_pass" required>
+                        <p id="errorold" style="color: red;"></p>
+                        <input type="password" placeholder="Enter New Password" id="new_pass" required>
+                        <p id="" style="color: red;"></p>
+
+                        <input type="password" placeholder="Enter Confirm Password" id="confirm_pass" required>
+                        <p id="errorconfirm" style="color: red;"></p>
+                        <input type="submit" value="Submit">
+                    </form>
+                    <div class="group">
+                        <a href="#">&nbsp;&nbsp;Forgot Password</a>
+                        <a href="#">Sign Up&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    <script>
+        let old_password = "mahi@902";
+        document.getElementById("submitform").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let old_pass = document.getElementById("old_pass").value;
+            let new_pass = document.getElementById("new_pass").value;
+            let confirm_pass = document.getElementById("confirm_pass").value;
+
+            if (old_pass === old_password) {
+                if (new_pass === confirm_pass && new_pass.length > 5) {
+                    alert("Password updated successfully!");
+                } else if (new_pass.length <= 5) {
+                    document.getElementById("errorconfirm").innerText = "New password must be at least 6 characters!";
+                } else {
+                    document.getElementById("errorconfirm").innerText = "Incorrect Confirm Password";
+                }
+            } else {
+                document.getElementById("errorold").innerText = "Incorrect Old Password";
+            }
+
+            document.getElementById("old_pass").value = "";
+            document.getElementById("new_pass").value = "";
+            document.getElementById("confirm_pass").value = "";
+        });
+    </script>
+</body>
+</html>

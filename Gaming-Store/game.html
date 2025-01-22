@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header class="w-[100%] lg:h-[80px] h-[250px] bg-[#22133A] lg:flex justify-between  items-center py-4 ">
+
+    <div class="left text-center w-auto xl:pl-36">
+       <a href="#"><h1 class="text-3xl font-bold text-[#FBFBFB]">ARCADE</h1></a>
+    </div>
+    <div class="right text-center xl:w-[50%] w-[100%]  text-xl xl:pr-36 lg:flex justify-center">
+       <ul class="list lg:flex lg:flex-row flex pt-5 flex-col justify-around w-[100%] lign-middle h-[80px] text-white items-center">
+        <a href="#" class="">Products</a>
+        <a href="#">On Sale</a>
+        <a href="#">Contact Us</a>
+       </ul>
+       <ul class="list lg:flex flex pt-5  justify-center w-[100%] xl:w-[60%] lign-middle h-[80px] text-white items-center">
+        <a href="#" class="pr-5"><i class="fa-solid fa-user "></i>&nbsp;&nbsp;Log In</a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i>   </a>
+       </ul>
+    </div>
+  </header>
+
+  <div class="hero_sec bg-[url('images/banner-bg.jpg')] bg-no-repeat bg-center bg-cover w-[100%] md:h-[500px] xl:h-[640px] p-16 md:flex md:justify-center md:items-start py-28">
+    <div class="left bg-[#7F52DE] md:w-[55%]   w-[100%] md:mr-[-50px] z-10 p-14 rounded-[50px] text-white font-semibold">
+      <h3 class="md:text-[25px] ">Power up your game</h3>
+      <h1 class="font-extrabold xl:text-[70px] text-[30px] leading-tight">CYBER KID INFINITE</h1>
+      <h3 class="xl:text-[25px] mb-6">Now Available on PC & Console</h3>
+      <a href="#" class="bg-white rounded-[50px] px-6 py-2 text-[#7F52DE]">Buy Now</a>
+    </div>
+    <div class="right xl:w-[40%] md:w-[50%] w-[100%] mt-10 md:mt-0">
+      <img src="images/hero-img.jpg" class="h-[600px] md:h-[500px] xl:h-[600px] w-[100%] md:ml-[-15px] rounded-[50px] ">
+    </div>
+  </div>
+
+  <div class="products bg-[#060506] h-auto pt-[13%] px-[10%]">
+    <div class="headp text-white md:flex md:justify-between h-[150px] items-center pb-[20px] md:mt-[70px] lg:mt-[0px]">
+        <h1 class="text-[50px] font-bold mb-[20px] lg:mb-[0px] " >BEST <span class="bg-gradient-to-br from-gray-300 to-purple-950 text-transparent bg-clip-text "> SELLERS </span></h1>
+        <a href="#" class="bg-white rounded-[50px] px-[4%] py-[10px] text-[#7F52DE] font-bold">View All</a>
+        
+    </div>
+
+    <div id="all_products" class="flex flex-wrap lg:justify-between justify-center pb-[10%]">
+       <!-- javascript dynamic code -->
+    </div>
+    </div>
+
+    <div class="category bg-[#232223] h-auto pt-[5%] px-[10%] pb-[8%]">
+        <h1 class="text-[50px] font-bold text-white" >SHOP BY <span class="bg-gradient-to-br from-gray-300 to-purple-950 text-transparent bg-clip-text">CATEGORY</span></h1>
+         <div class="category_all grid md:grid-cols-2 justify-center grid-cols-1 lg:grid-cols-3 gap-[30px] mt-[5%] w-[100%]">
+          <div class="cat1 overflow-hidden  rounded-[30px] flex justify-center flex-col ">
+            <img src="images/cat1.jpg" class=" rounded-[30px]  hover:scale-[1.050] duration-75	">
+            <h1 class="text-[23px] text-white font-bold py-[6px] text-center tracking-wider">Consoles</h1>
+          </div>
+
+          <div class="cat1 overflow-hidden  rounded-[30px] flex justify-center flex-col ">
+            <img src="images/cat2.jpg" class=" rounded-[30px]  hover:scale-[1.050] duration-75 ">
+            <h1 class="text-[23px] text-white font-bold py-[6px] text-center tracking-wider">Accessories</h1>
+          </div>
+
+          <div class="cat1 overflow-hidden  rounded-[30px] flex justify-center flex-col ">
+            <img src="images/cat3.jpg" class=" rounded-[30px]  hover:scale-[1.050] duration-75 ">
+            <h1 class="text-[23px] text-white font-bold py-[6px] text-center tracking-wider">Controllers</h1>
+          </div>
+         </div>
+    </div>
+
+    <div class="save_money px-[10%] pt-[10%] pb-[18%] text-center bg-[url(images/save_money_img.jpg)] bg-no-repeat bg-cover text-white ">
+      <h1 class="text-[70px] bg-gradient-to-br from-gray-300 to-purple-950 text-transparent bg-clip-text font-bold">SPEND & SAVE</h1>
+      <p class="text-[20px] pb-[3%]">Save 20% when you spend more than $125 </p>
+      <a href="#" class="bg-[#7F52DE] rounded-[50px] px-[4%] py-[10px] text-white font-bold">View All</a>
+
+    </div>
+
+
+    <div class="gallery bg-[#7F52DE] flex justify-center pb-[6%]">
+       <img src="images/Games.png" class="mt-[-8%]">
+    </div>
+
+    <div class="footer  grid grid-cols-1 justify-center w-[100%] text-center lg:text-left lg:grid-cols-4 gap-6 px-[10%] pt-[10%] pb-[5%] bg-black text-white">
+      <div class="sec1">
+        <a href="#"><h1 class="text-3xl font-bold text-[#FBFBFB] pt-[25%]">ARCADE</h1></a>
+      </div>
+      <div class="sec2">
+        <h2 class="text-[25px] font-bold pb-[20px]">Products</h2>
+        <ul class="text-[18px]">
+          <li class="pb-[7px]"><a href="#">Games</a></li>
+          <li class="pb-[7px]"><a href="#">Consoles</a></li>
+          <li class="pb-[7px]"><a href="#">Controllers</a></li>
+          <li class="pb-[7px]"><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="sec2">
+        <h2 class="text-[25px] font-bold pb-[20px]">Store</h2>
+        <ul class="text-[18px]">
+          <li class="pb-[7px]">500 Terry Francine Street San Francisco, CA 94158</li>
+          <li class="pb-[7px]">Mon - Fri: 9am - 9pm</li>
+          <li class="pb-[7px]"><a href="#">info@mysite.com</a></li>
+          <li class="pb-[7px]"><a href="#">123-456-7890</a></li>
+        </ul>
+      </div>
+
+      <div class="sec2">
+        <h2 class="text-[25px] font-bold pb-[20px]">Policy</h2>
+        <ul class="text-[18px]">
+          <li class="pb-[7px]"><a href="#">Terms & Conditions</a></li>
+          <li class="pb-[7px]"><a href="#">Shipping Policy</a></li>
+          <li class="pb-[7px]"><a href="#">Refund Policy</a></li>
+          <li class="pb-[7px]"><a href="#">Privacy Policy</a></li>
+          <li class="pb-[7px]"><a href="#">Cookie Policy</a></li>
+          <li class="pb-[7px]"><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copy w-[100%] px-[10%] pt-[3%] pb-[3%] bg-black text-white text-center border-t-[1px]">
+      <p>© 2035 by ARCADE. Powered and secured by Wix</p>
+    </div>
+
+
+    
+    <script>
+    function products(){
+
+        let product_div = document.createElement("div");
+        product_div.setAttribute("class", "flex flex-col items-center m-4 w-[220px] py-[2%] mt-[20%] lg:mt-[10px] md:mt-[10px]");
+    
+        let product_image = document.createElement("img");
+        product_image.setAttribute("src", "images/pro1.jpg");
+        product_image.setAttribute("class", "w-[100%] h-[200px] pb-[10px]");
+    
+        let product_heading = document.createElement("h3");
+        product_heading.innerText = "Echo Headset";
+        product_heading.setAttribute("class", "text-white text-[19px]");
+    
+        let product_price = document.createElement("p");
+        product_price.innerText = "$39.99";
+        product_price.setAttribute("class", "text-white text-[19px] mb-[15px]");
+    
+        let product_btn = document.createElement("a");
+        product_btn.innerText = "Add To Cart";
+        product_btn.setAttribute("class", "text-white text-[15px] bg-[#8858ED] px-5 py-2 rounded-[20px]");
+        product_btn.setAttribute("href", "#");
+    
+        product_div.append(product_image, product_heading, product_price, product_btn);
+    
+        let all_products = document.getElementById("all_products");
+        all_products.appendChild(product_div);
+    }
+    
+    // Create 20 product items
+    for (let i = 0; i < 12; i++) {
+        products();
+    }
+    </script>
+    
+</html>

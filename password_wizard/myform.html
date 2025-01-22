@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password_Wizard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .formbox {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('image/bg.jpg'); 
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .formbody {
+            background: rgba(255, 255, 255, 0.2); 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            width: 400px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+        }
+        
+
+        .logintext {
+            position: absolute;
+            top: 0px;
+            background-color: white;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            font-family: monospace;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            width: 80%;
+        }
+
+
+button {
+  margin-top: 20px;
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none; /* dont allowed for copy text */
+}
+
+
+button:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+        #errorold,
+        #errorconfirm {
+            color: red;
+            font-size: 14px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="formbox">
+        <form action="#" id="submitform" class="formbody">
+            <h1 class="logintext">Reset Password</h1>
+            <input type="password" placeholder="Enter Old Password:" id="old_pass" required>
+            <p id="errorold"></p>
+            <input type="password" placeholder="Enter New Password" id="new_pass">
+            <input type="password" placeholder="Enter Confirm Password" id="confirm_pass" >
+            <p id="errorconfirm"></p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        let old_password = "mahi@902";
+        document.getElementById("submitform").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let old_pass = document.getElementById("old_pass").value;
+            let new_pass = document.getElementById("new_pass").value;
+            let confirm_pass = document.getElementById("confirm_pass").value;
+
+            if (old_pass === old_password ) {
+                if (new_pass === confirm_pass && new_pass.length > 5) {
+                    alert("Password updated successfully!");
+                } else if(new_pass.length < 5){
+                    document.getElementById("errorconfirm").innerText = "New password must be at least 6 characters!";
+
+                }
+                else{
+                    document.getElementById("errorconfirm").innerText = "Incorrect Confirm Password";
+
+                }
+            } else {
+                document.getElementById("errorold").innerText = "Incorrect Old Password";
+            }
+
+            document.getElementById("old_pass").value = "";
+            document.getElementById("new_pass").value = "";
+            document.getElementById("confirm_pass").value = "";
+        });
+    </script>
+</body>
+</html>
