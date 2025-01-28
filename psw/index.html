@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <h1>Welcome back</h1>
+        <p>Enter your credentials to access your account</p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="password">Old Password</label>
+          <input
+            type="password"
+            id="oldPassword"
+            placeholder="Enter your old password"
+            autocomplete="current-password"
+          />
+          <div class="error" id="oldPasswordError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">New Password</label>
+          <input
+            type="password"
+            id="newPassword"
+            placeholder="Enter your New password"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Confrim Password</label>
+          <input
+            type="password"
+            id="confrimPassword"
+            placeholder="Renter your password"
+            autocomplete="current-password"
+          />
+          <div class="error" id="passwordError"></div>
+        </div>
+
+        <button type="submit" class="login-btn" id="loginButton">Submit</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

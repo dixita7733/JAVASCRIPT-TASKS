@@ -159,8 +159,8 @@ button:after {
             let new_pass = document.getElementById("new_pass").value;
             let confirm_pass = document.getElementById("confirm_pass").value;
 
-            if (old_pass === old_password ) {
-                if (new_pass === confirm_pass && new_pass.length > 5) {
+            if (old_pass == old_password ) {
+                if (new_pass == confirm_pass && new_pass.length > 5) {
                     alert("Password updated successfully!");
                 } else if(new_pass.length < 5){
                     document.getElementById("errorconfirm").innerText = "New password must be at least 6 characters!";
@@ -174,9 +174,9 @@ button:after {
                 document.getElementById("errorold").innerText = "Incorrect Old Password";
             }
 
-            document.getElementById("old_pass").value = "";
-            document.getElementById("new_pass").value = "";
-            document.getElementById("confirm_pass").value = "";
+            old_pass.value = "";
+            new_pass.value = "";
+            confirm_pass.value = "";
         });
     </script>
 </body>

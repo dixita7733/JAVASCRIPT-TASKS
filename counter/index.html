@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1 id="num" style="font-size: 150px;">0</h1>
+    <button id="plus" onclick="myfunc()">+</button>
+    </center>
+    
+</body>
+<script>
+
+    let num = 0;
+           
+     function myfunc(){
+
+        num++;
+        console.log(num)
+        document.getElementById("num").innerText =  num;
+
+
+     }
+    //   myfunc();
+
+
+        // document.getElementById("plus").addEventListener("click", function (e) {
+        //     e.preventDefault();
+           
+        //     num++;
+
+           
+           
+        // });
+</script>
+</html>

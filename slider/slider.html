@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .sliderpart{
+        display: flex;
+        width: 100%;
+        position: relative;
+         overflow: hidden; 
+    }
+ .slider img{
+    height: 600px;
+    width: 100vw;
+    height: 100vh;
+ }
+ .slider img{
+    transition: transform 0.5s ease;
+ }
+ .arrow button{
+    font-size: 20px;
+    padding: 10px 20px;
+ }
+ .arrow{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    /* margin-top: -60px; */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    right: 50%;
+  }
+</style>
+<body>
+<div class="sliderpart">
+    <div class="slider" id="s1">
+        <img src="images/s1.jpg" class="images" id="tryimg">
+    </div>
+    <div class="slider" id="s2">
+        <img src="images/s2.webp" class="images">
+    </div>
+    <div class="slider" id="s3">
+        <img src="images/s3.jpg" class="images">
+    </div>
+
+    <div class="slider" id="s4">
+        <img src="images/s1.jpg" class="images">
+    </div>
+    <div class="slider" id="s5">
+        <img src="images/s2.webp" class="images">
+    </div>
+    <div class="slider" id="s6">
+        <img src="images/s3.jpg" class="images">
+    </div>
+</div>
+<center class="arrow">
+<button id="left" onclick="myfuncleft()"><</button>
+<button id="right" onclick="myfuncright()">></button>
+</center>
+
+<script>
+
+// let myarray = ["images/s1.jpg", "images/s2.webp", "images/s3.jpg", "images/s1.jpg", "images/s2,webp", "imgaes/s3.jpg"]
+
+// let num = 0;
+// console.log(num)
+// for(let i = 0; i <= num; i++){
+//     document.getElementById("tryimg").setAttribute("src", myarray[i]);
+//     if(num >= 0){
+//     num++;
+// }else{
+//     break;
+// }
+// }
+
+
+let num = 0;
+
+    function myfuncright(){
+        num++;
+        console.log(num)
+        if(num > 5){
+            num = 0;
+        }
+        else{
+            document.getElementsByClassName("images")[num].style.marginLeft = "-100vw"   
+
+        }
+        
+
+    }
+
+    function myfuncleft() {
+    num--;
+    console.log(num);
+    if (num < 0) {
+        num = 5;
+
+    }
+    else{
+        document.getElementsByClassName("images")[num].style.marginRight = "100vw"
+
+    }
+}
+
+</script>
+</body>
+
+</html>
