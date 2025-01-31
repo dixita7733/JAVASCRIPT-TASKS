@@ -62,8 +62,8 @@
     </div>
 </div>
 <center class="arrow">
-<button id="left" onclick="myfuncleft()"><</button>
-<button id="right" onclick="myfuncright()">></button>
+<button id="left" ><</button>
+<button id="right" >></button>
 </center>
 
 <script>
@@ -82,34 +82,75 @@
 // }
 
 
-let num = 0;
+// let num = 0; 
 
-    function myfuncright(){
-        num++;
-        console.log(num)
-        if(num > 5){
-            num = 0;
-        }
-        else{
-            document.getElementsByClassName("images")[num].style.marginLeft = "-100vw"   
+//     function myfuncright(){
+//         num++;
+//         console.log(num)
+//         if(num > 5){
+//             num = 0;
+//         }
+//         else{
+//             document.getElementsByClassName("images")[num].style.marginLeft = "-100vw"   
 
-        }
+//         }
         
 
+//     }
+
+//     function myfuncleft() {
+//     num--;
+//     console.log(num);
+//     if (num < 0) {
+//         num = 5;
+
+//     }
+//     else{
+//         document.getElementsByClassName("images")[num].style.marginRight = "100vw"
+
+//     }
+// }
+
+let leftbtn = document.getElementById("left");
+let rightbtn = document.getElementById("right");
+
+let slidersec = document.querySelectorAll(".slider"); 
+
+let transitionright = 100; 
+
+rightbtn.addEventListener("click", function (e) {
+    
+    for (let i = 0; i < slidersec.length; i++) { 
+        slidersec[i].style.transform = `translateX(-${transitionright}%)`; 
+        slidersec[i].style.transition = "transform 0.5s ease-in-out"; 
+
+        console.log("Index:", i);
+        console.log("Transition Value:", transitionright);
+        console.log(slidersec.length)
     }
 
-    function myfuncleft() {
-    num--;
-    console.log(num);
-    if (num < 0) {
-        num = 5;
+    transitionright += 100; 
+});
 
-    }
-    else{
-        document.getElementsByClassName("images")[num].style.marginRight = "100vw"
 
+
+let transitionleft = 0;
+
+leftbtn.addEventListener("click", function (e) {
+
+
+    for (let i = 0; i < slidersec.length; i++) { 
+        slidersec[i].style.transform = `translateX(${transitionleft}%)`; 
+        slidersec[i].style.transition = "transform 0.5s ease-in-out"; 
     }
-}
+
+    console.log("Transition Value:", transitionleft);
+    console.log("Total Slides:", slidersec.length);
+
+    transitionleft += 100; 
+
+});
+
 
 </script>
 </body>
