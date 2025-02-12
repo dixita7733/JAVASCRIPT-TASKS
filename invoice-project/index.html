@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("subtle-background.jpg"); /* Replace with your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+    }
+
+    .swiper {
+      width: 100%;
+      /* height: 100%; */
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    
+
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            position: relative; /* For pattern overlay */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .invoice-info, .customer-info {
+            flex: 1;
+        }
+
+        .customer-info {
+            text-align: right;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border: 1px solid #eee; /* Table border */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: none; /* Remove cell borders */
+            border-bottom: 1px solid #eee; /* Add back bottom border */
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #444;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .totals {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .totals strong {
+            color: #d32f2f;
+        }
+
+        .payment-info {
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
+
+        p {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        .container::before {  /* Pattern overlay */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("subtle-pattern.png"); /* Replace with your pattern image */
+            background-size: 200px;
+            opacity: 0.1;
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .invoice-details {
+                flex-direction: column;
+            }
+
+            .customer-info {
+                text-align: left;
+                margin-top: 15px;
+            }
+
+            th, td {
+                padding: 12px;
+            }
+        }
+    
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" id="slide1">
+        <div class="container">
+            <div class="header">
+                <img class="logo" src="your-logo.png" alt="Your Logo">
+                <h1>INVOICE</h1>
+            </div>
+          
+            <div class="invoice-details" id="details-bill"> 
+                <!-- <div class="invoice-info">
+                    <p><strong>To:</strong><br>
+                        Henry J. Berger<br>
+                        24 dummy Street Area, CA, USA<br>
+                        Phone: +65 465 6546
+                    </p>
+                </div>
+                <div class="customer-info">
+                    <p><strong>Invoice No:</strong> #215456<br>
+                        <strong>Date:</strong> 12/03/2024
+                    </p>
+                </div> -->
+            </div>
+          
+            <table>
+                <thead >
+                    <tr>
+                        <th>PRODUCT</th>
+                        <th>PRICE</th>
+                        <th>QTY</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody id="bill-list">
+                    
+                </tbody>
+            </table>
+          
+            <div class="totals" id="totalid">
+              
+            </div>
+          
+            <div class="payment-info">
+                <p><strong>Payment Information:</strong><br>
+                    Bank Name: Fast Security Bank<br>
+                    Account: 1213123412345
+                </p>
+            </div>
+          
+            <div class="footer">
+                <p>Thank you for your purchase!</p>
+                <p>Suhan Alam<br>
+                    Authority</p>
+            </div> 
+          </div>
+      </div>
+      <div class="swiper-slide" id="slide2"></div>
+      <div class="swiper-slide" id="slide3"></div>
+      <div class="swiper-slide" id="slide4"></div>
+      <div class="swiper-slide" id="slide5"></div>
+
+    </div>
+    <div class="swiper-button-next" id="nextbtn"></div>
+    <div class="swiper-button-prev" id="prevbtn"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+  </script>
+
+  <script>
+
+// let num = 0;
+   
+    //    console.log(num)
+    //    num++;
+ 
+      let billtable = document.getElementsByClassName("swiper-slide")[0]
+      billtable.innerHTML = ` <div class="container">
+        <div class="header">
+            <img class="logo" src="your-logo.png" alt="Your Logo">
+            <h1>INVOICE</h1>
+        </div>
+
+        <div class="invoice-details s0" id="details-bill"> 
+           
+        </div>
+
+        <table>
+            <thead >
+                <tr>
+                    <th>PRODUCT</th>
+                    <th>PRICE</th>
+                    <th>QTY</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="bill-list1">
+                
+            </tbody>
+        </table>
+
+        <div class="totals" id="totalid">
+          
+        </div>
+
+        <div class="payment-info">
+            <p><strong>Payment Information:</strong><br>
+                Bank Name: Fast Security Bank<br>
+                Account: 1213123412345
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>Thank you for your purchase!</p>
+            <p>Suhan Alam<br>
+                Authority</p>
+        </div> 
+    </div>`;
+
+    let info1 = [
+            {name: "name here1", address: "address here1", phone: 132452, billno: 1, date: "1/2/2025"},
+            
+        ]
+
+        let infolist = document.getElementsByClassName("s0");
+        infolist.innerHTML = info1.map(infoall =>
+            `<div class="invoice-info">
+                    <p><strong>Name:</strong>
+                    ${infoall.name}<br><strong>Address:</strong>
+                    ${infoall.address}<br><strong>Phone: </strong>
+                    ${infoall.phone}
+                    </p>
+                </div>
+                <div class="customer-info">
+                    <p><strong>Invoice No:</strong> ${infoall.billno}<br>
+                        <strong>Date:</strong> ${infoall.date}
+                    </p>
+                </div> `
+        ).join('');
+
+
+
+    let beautyProductBills1 = [
+    { product: "Lipstick", price: 1200, quantity: 2, total: 2400 },
+    { product: "Foundation", price: 2500, quantity: 1, total: 2500 },
+    { product: "Eyeliner", price: 800, quantity: 2, total: 1600 },
+    { product: "Perfume", price: 3500, quantity: 1, total: 3500 },
+    { product: "Face Cream", price: 1800, quantity: 1, total: 1800 },
+    { product: "Nail Polish", price: 500, quantity: 3, total: 1500 }
+];
+
+
+    let billlist = document.getElementById("bill-list1");
+    billlist.innerHTML = beautyProductBills1.map(ele => 
+       `<tr>
+                <td>${ele.product}</td>
+                <td>${ele.price}</td>
+                <td>${ele.quantity}</td>
+                <td>${ele.total}</td>
+         </tr>` 
+    ).join('');
+
+
+    let subtotal1 = beautyProductBills1.reduce((acc, proall) => acc + proall.total, 0);
+    let tax1 = subtotal1 * 0.10; // 10% tax
+    let gtotal1 = subtotal1 + tax1;
+
+// console.log(subtotal); 
+
+
+    let total1 = document.getElementById("totalid");
+    total1.innerHTML = `       
+            <p><strong>Sub Total:</strong> ₹${subtotal}</p>
+            <p><strong>Tax 10%:</strong> ₹${tax}</p>
+            <p><strong>Grand Total:</strong> <strong> ₹${gtotal}</strong></p>`
+
+
+
+
+       let listnum = 1;
+
+
+ 
+        // let info1 = [
+        //     {name: "name here", address: "address here", phone: 132452, billno: 1, date: "1/2/2025"},
+            
+        // ]
+
+        let info2 = [
+            {name: "name here2", address: "address here2", phone: 1324522, billno: 2, date: "2/2/2025"},
+            
+        ]
+
+        // let info3 = [
+        //     {name: "name here3", address: "address here3", phone: 1324523, billno: 3, date: "3/2/2025"},
+            
+        // ]
+       
+       
+    
+        let infolist = document.getElementsByClassName("s0");
+        infolist.innerHTML = info1.map(infoall =>
+            `<div class="invoice-info">
+                    <p><strong>Name:</strong>
+                    ${infoall.name}<br><strong>Address:</strong>
+                    ${infoall.address}<br><strong>Phone: </strong>
+                    ${infoall.phone}
+                    </p>
+                </div>
+                <div class="customer-info">
+                    <p><strong>Invoice No:</strong> ${infoall.billno}<br>
+                        <strong>Date:</strong> ${infoall.date}
+                    </p>
+                </div> `
+        ).join('');
+
+
+        
+        
+
+
+    let beautyProductBills = [
+    { product: "Lipstick", price: 1200, quantity: 2, total: 2400 },
+    { product: "Foundation", price: 2500, quantity: 1, total: 2500 },
+    { product: "Eyeliner", price: 800, quantity: 2, total: 1600 },
+    { product: "Perfume", price: 3500, quantity: 1, total: 3500 },
+    { product: "Face Cream", price: 1800, quantity: 1, total: 1800 },
+    { product: "Nail Polish", price: 500, quantity: 3, total: 1500 }
+];
+
+
+    let billlist = document.getElementById("bill-list");
+    billlist.innerHTML = beautyProductBills.map(ele => 
+       `<tr>
+                <td>${ele.product}</td>
+                <td>${ele.price}</td>
+                <td>${ele.quantity}</td>
+                <td>${ele.total}</td>
+         </tr>` 
+    ).join('');
+
+
+    let subtotal = beautyProductBills.reduce((acc, proall) => acc + proall.total, 0);
+    let tax = subtotal * 0.10; // 10% tax
+    let gtotal = subtotal + tax;
+
+// console.log(subtotal); 
+
+
+    let total = document.getElementById("totalid");
+    total.innerHTML = `       
+            <p><strong>Sub Total:</strong> ₹${subtotal}</p>
+            <p><strong>Tax 10%:</strong> ₹${tax}</p>
+            <p><strong>Grand Total:</strong> <strong> ₹${gtotal}</strong></p>`
+
+        
+
+
+
+  </script>
+</body>
+
+</html>

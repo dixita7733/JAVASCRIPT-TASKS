@@ -1,0 +1,113 @@
+/* style.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    justify-content: center; /* Horizontally center content */
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh; /* Ensure full viewport height */
+}
+.head{
+    margin-left: 80px;
+}
+
+.container {
+    display: flex;
+    width: 90%; /* Occupy most of the viewport width */
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensure rounded corners don't clip content */
+}
+
+.calculator {
+    flex: 1; /* Takes up available space */
+    padding: 20px;
+    border-right: 1px solid #eee; /* Add a separator line */
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.chart-container {
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    margin: 20px auto; /* Center the chart */
+}
+
+.result {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.result-item {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.result label {
+    font-weight: normal;
+}
+
+.right-section {
+    flex: 0.5; /* Takes up less space */
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.promo {
+    background-color: #e0f2f7; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.promo h2 {
+    margin-top: 0;
+}
+
+.promo button {
+    background-color: #4caf50; /* Green button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popular-calculators {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.popular-calculators ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popular-calculators li {
+    margin-bottom: 10px;
+}

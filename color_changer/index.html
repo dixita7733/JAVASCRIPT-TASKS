@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+         
+    #colorbtn{
+       padding: 10px 20px;
+       background-color: black;
+       color: white;
+       font-size: 15px;
+       letter-spacing: 1px;
+       border: none;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <button id="colorbtn">Click Me</button>
+
+    </div>
+
+    <script>
+        function colorchanger() {
+            let letters = "123456789ABCDEF";
+            let color = "#";
+
+            for(let i = 1; i <= 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            console.log("color1"+color)
+            return color;
+        }
+
+
+        function colorchanger2() {
+            let letters2 = "0123456789ABCDEF";
+            let color2 = "#";
+
+            for(let i = 0; i < 6; i++) {
+                color2 += letters2[Math.floor(Math.random() * 16)];
+            }
+            console.log("color2" + color2)
+
+            return color2;
+        }
+
+
+        document.getElementById("colorbtn").addEventListener("click", function() {
+            document.body.style.background = `linear-gradient(to right, ${colorchanger()}, ${colorchanger2()}, ${colorchanger2()})`;
+        });
+    </script>
+</body>
+</html>
+
+

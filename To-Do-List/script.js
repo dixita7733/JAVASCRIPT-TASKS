@@ -1,7 +1,9 @@
    
 let num = 0;
 function mytodolist(){
-    let smsg = document.querySelector(".success-msg")
+    num++;
+    console.log("num:" + num);
+    let smsg = document.querySelector(".success-msg");
 
 
     let additemsbox = document.getElementById("useritem").value;
@@ -9,9 +11,9 @@ function mytodolist(){
   
     smsg.innerText = "Todo item updated Successfully!"
 
-    let added_item_box = document.createElement("div");
+    var added_item_box = document.createElement("div");
     added_item_box.setAttribute("class", "added-item")
-    // added_item_box.setAttribute("id", "added-all-item")
+    added_item_box.setAttribute("id", num)
 
     let add_para = document.createElement("p");
     add_para.setAttribute("class", "item-define");
@@ -30,6 +32,8 @@ function mytodolist(){
 
     let deletebtn = document.createElement("button");
     deletebtn.setAttribute("class", "deletebtn");
+    // deletebtn.setAttribute("onclick", "delfunc()")
+
 
     editbtn.append(icon1);
     deletebtn.append(icon2);
@@ -40,12 +44,68 @@ function mytodolist(){
      main_box.appendChild(added_item_box)
 
      document.getElementById("useritem").value = "";
+
+     deletebtn.addEventListener("click", function(e){
+        added_item_box.remove();
+     })
+
+     editbtn.addEventListener("click", function(e){
+        let new_para = prompt("Edit your item: ")
+        add_para.innerText = new_para;
+     })
+
         
 }
+
+// function delfunc(){
+//     let deletebtnv = document.querySelector(".deletebtn");
+//     let parentDiv = deletebtnv.parentNode; 
+
+//     console.log(parentDiv);
+//     let parentdivofdiv = parentDiv.closest("div").id;
+//     console.log(parentdivofdiv);
+    
+
+// //    let del = document.querySelector(".added-item");
+//    // del.style.display = "none";
+// //    del.remove();
+
+//     // let idp = deletebtnv.class;
+//     // alert(idp);
+
+// }
+
+// function delfunc() {
+//     let deletebtnv = document.getElementsByClassName("deletebtn")[0]; // Select the delete button by class name
+//     let parentDiv = deletebtnv.parentNode; // Get the parent node of the delete button
+
+//     console.log(parentDiv); // Log the parent node to console for verification
+
+//     // Now you can perform actions on the parent node as needed, for example:
+//     // parentDiv.style.display = "none"; // Hide the parent div
+//     // parentDiv.remove(); // Remove the parent div from the DOM
+// }
+
 
 let usermsg = document.getElementById("useritem").addEventListener("click", function(e){
     e.preventDefault();
     let successmsg = document.querySelector(".success-msg")
     successmsg.innerText = ""
 
-})
+    // let edit = document.getElementsByClassName("editbtn")
+    // edit.
+
+});
+
+// let delitem = document.getElementsByClassName("deletebtn")
+// delitem.addEventListener("click", function(e){
+//     e.preventDefault();
+//     let del = document.getElementsByClassName("added-item");
+//     console.log(del)
+//     del.remove();
+
+//     // let edit = document.getElementsByClassName("editbtn")
+//     // edit.
+
+// });
+
