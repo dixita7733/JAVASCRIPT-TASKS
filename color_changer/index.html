@@ -57,6 +57,7 @@
 
 
         document.getElementById("colorbtn").addEventListener("click", function() {
+            document.body.style.transition = "background 0.5s ease-in-out";
             document.body.style.background = `linear-gradient(to right, ${colorchanger()}, ${colorchanger2()}, ${colorchanger2()})`;
         });
     </script>
