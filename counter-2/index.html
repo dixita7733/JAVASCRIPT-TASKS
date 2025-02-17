@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Box</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        .main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background: #f4f4f4;
+        }
+        .counter_box {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 120px;
+        }
+        .counter_box h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="counter_box">
+            <h1 >0</h1>
+        </div>
+        <div class="counter_box">
+            <h1 >0</h1>
+        </div>
+        <div class="counter_box">
+            <h1 >0</h1>
+        </div>
+    </div>
+
+    <script>
+        let counter = document.querySelectorAll(".counter_box h1");
+        console.log(counter)
+
+        let value = [1000, 2000, 3000];
+
+        counter.forEach(element => {
+             console.log(element.innerText);
+
+             let current = 0;
+
+             let final_value = value[element];
+             console.log(final_value)
+
+             let speed = final_value / 100;
+        });
+    </script>
+</body>
+</html>
