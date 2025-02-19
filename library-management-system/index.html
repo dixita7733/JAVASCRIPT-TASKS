@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
+    <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         /* General Reset */
         * {
@@ -13,74 +16,31 @@
             font-family: "Arial", sans-serif;
         }
 
-        /* Body Styling */
-        body {
-            background-color: #f8f9fa;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
+        /* Apply to Headings */
+h1, h2, h3 {
+    font-family: "Playfair Display", serif;
+    font-weight: 700; /* Bold */
+    color: #8B7353;
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding: 30px 0px;
+}
 
-        /* HEADER */
-        .header {
-            width: 100%;
-            background: #2C3E50;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .header h1 {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .search-box {
-            background: white;
-            border-radius: 20px;
-            padding: 5px 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box input , .searboxdiv input {
-            border: none;
-            outline: none;
-            padding: 5px;
-            width: 200px;
-        }
-
-        .search-box button , .searboxdiv input{
-            background: transparent;
-            border: none;
-            color: #007bff;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
-
-        /* MAIN CONTAINER */
         .container {
-            background: white;
-            padding: 30px;
-            width: 750px;
+            background: #2f2f1e4f;
+            padding: 50px 100px;
+            width: 75vw;
+            max-width: 1000px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-top: 100px;
+            margin-top: 150px;
+            margin-bottom: 50px;
         }
 
         .container h2 {
             margin-bottom: 20px;
-            color: #333;
+            color: #8B7353;
         }
         .input-section{
             display: flex;
@@ -93,6 +53,16 @@
             margin: 0px !important;
         }
 
+        #error-msg{
+    margin: 45px 0px;
+    font-size: 23px;
+    font-weight: 100;
+    color: red;
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
  #searboxdiv{
      display: flex !important;
     justify-content: space-between !important;
@@ -103,6 +73,7 @@
     height: auto !important;
     margin-top: 30px !important;
     width: 100%  !important;
+    background-color: white;
     /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset; */
         }
 
@@ -113,7 +84,7 @@
         }
         #searchicon:hover{
 
-            background-color: #007bff;
+            background-color: #8B7353;
         }
 
         .input-section input {
@@ -123,18 +94,38 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             transition: 0.3s;
+            background: #2F2F1E;
+    color: #E3D9C6;
         }
+
+        .input-section input::placeholder {
+    color: #B4AE90;
+}
 
         .input-section input:focus {
             border-color: #007bff;
         }
+
+        .input-section button {
+    padding: 12px 18px;
+    background: #8B7353;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input-section button:hover {
+    background: #6A5A40;
+}
 
         button {
             width: 100%;
             padding: 12px;
             margin-top: 10px;
             border: none;
-            background-color: #2C3E50;
+            background-color: #007bff;
             color: white;
             font-size: 16px;
             cursor: pointer;
@@ -143,148 +134,195 @@
         }
 
         button:hover {
-            background-color: #2C3E50;
+            background-color: #0056b3;
         }
 
         /* BOOK LIST */
-        .book-list {
-            margin-top: 20px;
-            text-align: left;
-            width: 750px;
-        }
+
 
         .book-list h3 {
             font-size: 18px;
             color: #333;
         }
-        .main-container{
-            height: auto;
-            margin: 3% 0 5% 0;
-        }
 
-        /* .book {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-        } */
-
-        .book-info:hover {
-            transform: scale(1.02);
-        }
-
-        .book img {
-            width: 30%;
-            height: 25vh;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
-
-
-        .book-info p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* FOOTER */
-        .footer {
+        #searchitem{
             width: 100%;
-            background: #2C3E50;
-            color: white;
+    padding: 13px;
+    outline: none;
+    border: none;
+    background-color: white;
+        }
+
+        body {
+            background-color: #2F2F1E; /* Dark olive background */
+            color: #E3D9C6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            background: linear-gradient(to right, #5C5C48, #2F2F1E);
+            color: #E3D9C6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* TOP DIV (INCLUDES INPUT AND SEARCH) */
+        .top-div {
+            width: 90%;
+            max-width: 1000px;
+            background: #5C5C48;
+            color: #E3D9C6;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 80px; 
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* SEARCH BAR */
+        .search-container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-container input {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background: #2F2F1E;
+            color: #E3D9C6;
+        }
+
+        .search-container button {
+            padding: 12px 18px;
+    background: #8B7353;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+        }
+
+        .search-container button:hover {
+            background: #6A5A40;
+        }
+
+        /* MAIN CONTAINER */
+        .main-container {
+            margin-top: 20px;
+            width: 75vw;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left; 
+            margin: 20px 0px 120px 0px;
+            gap: 30px;
+            padding: 20px;
+            background: #5C5C48;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-info {
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            background: #2F2F1E;
+            width: 300px;
+      
+    flex: 1 1 calc(33.33% - 20px); 
+    max-width: calc(33.33% - 20px); 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+        }
+
+        .bookimg {
+            width: 100%;
+            height: 350px;
+            /* object-fit: cover; */
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* Book Title */
+        .book_title_name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #E3D9C6;
             text-align: center;
             padding: 10px 0;
-            /* position: fixed; */
-            bottom: 0;
-            left: 0;
+            background: #5C5C48;
+            letter-spacing: 1px;
         }
 
-        .footer p {
-            margin: 5px 0;
-        }
-
-        .social-icons {
-            margin-top: 5px;
-        }
-
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 18px;
-        }
-
-        .social-icons a:hover {
-            color: #ccc;
-        }
-
-    .book-list {
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 8%;
-}
-
-.book-list h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-/* .book {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 20px;
-} */
-
-.book-info {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
+        /* Book Description (Initially Hidden) */
+        .book-data {
+            position: absolute;
+    bottom: -100%;
+    left: 0;
     width: 100%;
-    background-color: #2c5d9141;
-    margin-bottom: 15px;
-    margin-top: 0px;
+    background: rgba(139, 115, 83, 0.95);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    transition: bottom 0.5s ease-in-out;
+    border-radius: 8px;
+    box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+        
+
+        /* Show Description on Hover */
+        .book-info:hover .book-data {
+            bottom: 0;
+        }
+
+        .book_author_name {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 1024px) {
+    .book-info {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
 }
 
-.bookimg {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.book-data {
-    /* margin-top: 10px; */
-    width: 70%;
-    /* background: red; */
-    padding: 0px 20px 0px 10px;
-
-}
-
-.book_title_name,
-.book_author_name {
-    margin: 5px 0;
-    font-size: 18px !important;
-    color: black !important;
-}
-.book-data p{
-    margin-top: 15px;
-}
-#error-msg{
-    margin: 45px 0px;
-    font-size: 23px;
-    font-weight: 100;
-    color: red;
-    display: none;
+@media (max-width: 768px) {
+    .book-info {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
 }
 
 
@@ -297,14 +335,9 @@
     <!-- HEADER -->
     <div class="header">
         <h1>📚 Library Management</h1>
-        <div class="search-box">
-            <input type="text" placeholder="Search for books...">
-            <button>🔍</button>
-        </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-     <div class="main-container">
+    <!-- YOUR TOP DIV WITH INPUT AND SEARCH -->
     <div class="container">
         <h2>Manage Your Books</h2>
         
@@ -322,118 +355,166 @@
 
     </div>
 
-
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <h2>Available Books</h2>
         <div class="book-list">
-            <h3>Available Books</h3>
-            <div class="book">
-                <h1 id="error-msg">No books found</h1>
-                <div class="book-info"><img class="bookimg" src="https://media.istockphoto.com/id/495477978/photo/open-book.jpg?s=612x612&w=0&k=20&c=vwJ6__M7CVPdjkQFUv9j2pr7QJiQ9bWW_5jXjR9TcjY="><div class="book-data"><h4 class="book_title_name">📖  Book-1 Name</h4><h4 class="book_author_name">✍️ Book-1 Author Name</h4><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div></div>
-                <div class="book-info"><img class="bookimg" src="https://5.imimg.com/data5/SELLER/Default/2022/2/LY/ES/ME/147129650/shrimad-bhagwat-geeta.png"><div class="book-data"><h4 class="book_title_name">📖  Book-2 Name</h4><h4 class="book_author_name">✍️ Book-2 Author Name</h4><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div></div>
-            </div>
-        </div>
-</div>
+            <h1 id="error-msg">No books found</h1>
 
-    <!-- FOOTER -->
-    <div class="footer">
-        <p>&copy; 2025 Library Management. All Rights Reserved.</p>
-        <div class="social-icons">
-            <a href="#">📘</a>
-            <a href="#">🐦</a>
-            <a href="#">📸</a>
+            <div class="book-info">
+                <img class="bookimg" src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781647226787/bhagavad-gita-9781647226787_hr.jpg" alt="Book">
+                <h4 class="book_title_name">Title: Bhagavad Geeta</h4>
+                <div class="book-data">
+                    <h4 class="book_author_name">Author: John Doe</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <img class="bookimg" src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781451687606/love-story-9781451687606_hr.jpg" alt="Book">
+                <h4 class="book_title_name">Title: Karen Kingsbury</h4>
+                <div class="book-data">
+                    <h4 class="book_author_name">Author: Jane Smith</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <img class="bookimg" src="https://blogs.roosevelt.edu/literacy/files/2020/08/811YX31IFLL.jpg" alt="Book">
+                <h4 class="book_title_name">Title: Arrival</h4>
+                <div class="book-data">
+                    <h4 class="book_author_name">Author: Mark Wilson</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <img class="bookimg" src="https://img1.od-cdn.com/ImageType-100/0017-1/%7BBAD7FAB2-92C5-41A5-AA71-6F71F17270AF%7DImg100.jpg" alt="Book">
+                <h4 class="book_title_name">Title: Tina Fey</h4>
+                <div class="book-data">
+                    <h4 class="book_author_name">Author: John Doe</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <img class="bookimg" src="https://hachette.imgix.net/books/9780762498130.jpg?auto=compress,format" alt="Book">
+                <h4 class="book_title_name">Title: Great Gatsby</h4>
+                <div class="book-data">
+                    <h4 class="book_author_name">Author: Jane Smith</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <div class="book-info">
+                <img class="bookimg" src="https://cdn2.penguin.com.au/covers/original/9780670921607.jpg" alt="Book">
+                <h4 class="book_title_name">Title: The Lean Startup</h4>
+                <div class="book-data">
+                    <h4 class="book_author_name">Author: Mark Wilson</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
-
-    <script>
+<script>
+        
     
-        // let books = document.querySelector("#addBook").addEventListener("click", function(e){
-        function book_craete(){
+    /*  let books = document.querySelector("#addBook").addEventListener("click", function(e){ */
+    function book_craete(){
+        
+        let book_name = document.querySelector("#bookName").value;
+        let book_author_name = document.querySelector("#authorName").value;
+        let image_url = document.querySelector("#imgurl").value;
+
+        
+        /*  console.log(book_name)
+           console.log(book_author_name)  */
+
+       
+
+        let book_main = document.querySelector(".book-list");
+        book_img = document.createElement("img"); // 2
+        book_img.classList.add("bookimg");
+
+        let div_book = document.createElement("div");
+        div_book.classList.add("book-info"); // 1
+
+        let div_data = document.createElement("div");
+        div_data.classList.add("book-data"); // 4
+
+        let book_title = document.createElement("h4");
+        book_title.classList.add("book_title_name"); // 3
+
+        let book_author = document.createElement("h4"); // 4-1
+        book_author.classList.add("book_author_name");
+        let book_desc = document.createElement("p"); // 4 -2 
+
+        book_img.setAttribute("src", image_url);
+
+        let book_title_value = book_title.innerText = `Title: ${book_name}`;
+        let book_author_value = book_author.innerText = `Author:  ${book_author_name}`;
+        let book_desc_value = book_desc.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+        // img_url_value = book_img.innerText = image_url;
+       
+        book_main.append(div_book);
+        div_book.append(book_img,book_title, div_data)
+        div_data.append( book_author, book_desc);
             
-            let book_name = document.querySelector("#bookName").value;
-            let book_author_name = document.querySelector("#authorName").value;
-            let image_url = document.querySelector("#imgurl").value;
+       document.querySelector("#bookName").value = "";
+       document.querySelector("#authorName").value = "";
+       document.querySelector("#imgurl").value = "";
 
-            
-            // console.log(book_name)
-            // console.log(book_author_name) 
-    
-            // <img src="book.jpg" alt="Book Image">
-            //         <div class="book-info">
-            //             <h4>Book Title</h4>
-            //             <p><strong>Author:</strong> Author Name</p>
-            //             <p>Description about the book...</p>
-            //         </div>
-    
-            let book_main = document.querySelector(".book");
-            book_img = document.createElement("img");
-            book_img.classList.add("bookimg");
-    
-            let div_book = document.createElement("div");
-            div_book.classList.add("book-info");
+       book_name = book_name.toLowerCase();
+       book_author_name = book_author_name.toLowerCase();
+       image_url = image_url.toLowerCase(); 
 
-            let div_data = document.createElement("div");
-            div_data.classList.add("book-data");
-    
-            let book_title = document.createElement("h4");
-            book_title.classList.add("book_title_name");
-            let book_author = document.createElement("h4");
-            book_author.classList.add("book_author_name");
-            let book_desc = document.createElement("p");
-    
-            book_img.setAttribute("src", image_url);
-    
-            let book_title_value = book_title.innerText = `📖 ${book_name}`;
-            let book_author_value = book_author.innerText = `✍️  ${book_author_name}`;
-            let book_desc_value = book_desc.innerText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
-
-            // img_url_value = book_img.innerText = image_url;
-           
-            let book_list = document.querySelector(".book-list");
-book_list.appendChild(div_book);
-
-            book_main.append(div_book);
-            div_book.append(book_img,div_data)
-            div_data.append( book_title,book_author, book_desc);
-                
-           document.querySelector("#bookName").value = "";
-           document.querySelector("#authorName").value = "";
-           document.querySelector("#imgurl").value = "";
-
-           book_name = book_name.toLowerCase();
-           book_author_name = book_author_name.toLowerCase();
-           image_url = image_url.toLowerCase(); 
-
-        }
+    }
 
 
 
-    function searchFunction() {
-    let searchInput = document.querySelector("#searchitem").value.toLowerCase();
-    let books = document.querySelectorAll(".book-info");
-    let errorMsg = document.querySelector("#error-msg");
-    
-    books.forEach(book => {
-        let bookTitle = book.querySelector(".book_title_name").textContent.toLowerCase();
-        let bookAuthor = book.querySelector(".book_author_name").textContent.toLowerCase();
+    function searchFunction(){
 
-        if (bookTitle.includes(searchInput) || bookAuthor.includes(searchInput)) {
-            book.style.display = "flex"; 
-            errorMsg.style.display = "none";
+       let search = document.getElementById("searchitem").value.toLowerCase();
+       console.log(search);
 
-            
-        } else {
-            book.style.display = "none"; 
-            errorMsg.style.display = "block";
+       let title = document.querySelectorAll(".book_title_name");
+       let author = document.querySelectorAll(".book_author_name");
+       let errorMsg = document.querySelector("#error-msg");
 
-        }
-    });
 
-    
-}
+       let box_div = document.querySelectorAll(".book-info");
+       
+    //    console.log(title)
+      
+       box_div.forEach(box1 => {
+        let text1 = box1.innerText.toLowerCase(); 
+        
+        console.log(`Searching for: "${search}", In Title: "${text1}"`);
+            if(text1.includes(search)){
+                box1.closest(".book-info").style.display = "block";
+                console.log("true");
+                errorMsg.style.display = "none";
 
-    
-    </script>
-    
+            }
+            else{
+                box1.closest(".book-info").style.display = "none"; 
+                console.log("false")
+                errorMsg.style.display = "block";
 
+            }
+
+
+       });
+
+
+    }
+
+   
+
+
+</script>
 </body>
 </html>
