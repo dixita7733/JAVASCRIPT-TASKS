@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="counter">
+        <h1 id="min">10</h1>
+        <button onclick="countfunc()">click</button>
+        <br><br>
+        <h1 id="countable"></h1>
+    </div>
+</body>
+<script>
+   function countfunc(){
+      let min = document.getElementById("min").innerText;
+      let countable = document.querySelector("#countable").innerText = min;
+
+      let myinterval = setInterval(myTimer, 600);
+
+      function myTimer(){
+        let countable = document.querySelector("#countable").innerText = min--;
+        Math.floor(countable);
+
+        if(countable == 0){
+            clearInterval(myinterval)
+        }
+      }
+      console.log(countable);
+   }
+</script>
+</html>

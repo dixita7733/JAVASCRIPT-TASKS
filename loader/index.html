@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .model{
+        background-color: black;
+        color: white;
+      /* display: flex; */
+      flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        width: 500px;
+        display: none;
+    }
+
+    .show{
+        display: flex;
+    }
+
+    .hide{
+        display: none;
+    }
+
+</style>
+<body>
+    <div class="main">
+        <div class="model hide">
+            <h1>This is heading</h1>
+            <p>This is paragraph</p>
+            <button onclick="stop()">Click</button>
+        </div>
+    </div>
+</body>
+<script>
+    let model = document.querySelector(".model")
+
+
+    window.onload = function(){
+        setTimeout(() => {
+            model.classList.add("show");
+            model.classList.remove("hide");
+            console.log("hello")
+        }, 3000);
+        clearTimeout(stop, 5000);
+
+    }
+
+    function stop(){
+        let model = document.querySelector(".model")
+        // model.classList.add("hide");
+        model.classList.remove("show");
+    }
+</script>
+</html>
