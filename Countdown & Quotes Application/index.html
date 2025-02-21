@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="flex justify-center items-center h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+
+    <div class="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-8 rounded-lg shadow-lg text-center transition transform hover:scale-105 w-96">
+        <h1 class="text-[20px] mb-[30px] font-extrabold text-white uppercase tracking-wide  text-center py-3 rounded-lg shadow-lg">
+            Countdown & Quotes Application  
+        </h1>
+        
+        <div class="flex items-center space-x-4">
+            <input type="number" id="min" placeholder="Enter a number" class="w-2/3 px-4 py-2 text-lg text-gray-900 rounded-md focus:ring-4 focus:ring-white focus:outline-none transition">
+            
+            <button onclick="countfunc()" class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold text-lg rounded-md shadow-md transition transform hover:scale-105 hover:bg-yellow-500">
+                Click
+            </button>
+        </div>
+
+        <h1 id="countable" class="mt-6 text-6xl font-extrabold drop-shadow-lg"></h1>
+        <p class="msg mt-2 text-lg text-gray-200"></p>
+    </div>
+
+</body>
+
+
+<script>
+   function countfunc(){
+     let Quote_box = ["Don't watch the clock; do what it does. Keep going.", "Success is not final, failure is not fatal: It is the courage to continue that counts.", "The only way to do great work is to love what you do.", "Believe you can and you're halfway there.", "Your time is limited, so don’t waste it living someone else’s life.", "Do what you can, with what you have, where you are.", "Don’t let yesterday take up too much of today.", "Difficulties in life are intended to make us better, not bitter.", "Success is getting what you want. Happiness is wanting what you get.", "The secret of getting ahead is getting started.", "Hardships often prepare ordinary people for an extraordinary destiny." , "Dream big, work hard, stay focused, and surround yourself with good people.", "Push yourself, because no one else is going to do it for you.", "Don't be afraid to give up the good to go for the great.", "Every day may not be good, but there’s something good in every day."]
+     
+    
+
+      let min = document.getElementById("min").value;
+      let countable = document.querySelector("#countable").innerText = min;
+
+      let myinterval = setInterval(myTimer, 600);
+
+      function myTimer(){
+        let countable = document.querySelector("#countable").innerText = min--;
+        Math.floor(countable);
+
+        if(countable == 0){
+            clearInterval(myinterval)
+            let motive_msg = document.querySelector(".msg").innerText = Quote_box[Math.floor(Math.random() * 10)];;
+        }
+        else{
+            let motive_msg = document.querySelector(".msg").innerText = "";
+
+        }
+      }
+      console.log(countable);
+   }
+</script>
+</html>
