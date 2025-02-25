@@ -56,6 +56,8 @@
     background-color: var(--whiteColor);
     padding: 20px;
     border-radius: 4px;
+    padding-bottom: 40px;
+    margin-top: 70px;
   }
   input[type="number"],
   .expensecat,
@@ -170,4 +172,8 @@
   .total{
       text-align: right;
       margin-top: 20px;
+  }
+  .head{
+    text-align: center;
+    margin: 40px 0px;
   }

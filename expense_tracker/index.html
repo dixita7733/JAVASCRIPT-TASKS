@@ -9,6 +9,7 @@
 </head>
 <body>
     <main class="main">
+        <h1 class="head">Expense_tracker</h1>
         <form action="" id="expense_tracker_form">
             <input type="text" class="name" placeholder="Enter expense name" name="name">
             <input type="number" class="amount" placeholder="Enter Amount" name="expense">
@@ -22,18 +23,10 @@
             <input type="submit" id="submitbtn" name="submit" value="Submit">
         </form>
         <div class="row">
-            <div class="selectOption">
-                <div class="selectElement">
-                    <input type="checkbox" id="selectChecked" name="">
-                    <label for="selectChecked">Select All</label>
-                </div>
-                <div class="deleteElement">
-                    <a class="deleteBtn" href="#"> Delete</a>
-                </div>
-            </div>
-            <div class="searchBox">
+
+            <!-- <div class="searchBox">
                 <input type="text" name="search" placeholder="Search Name.." class="searchName">
-            </div>
+            </div> -->
         </div>
         <div class="table-responsive">
             <table class="expense-data">
@@ -52,7 +45,7 @@
                 </tbody>
 
             </table>
-            <h3 class="total">Total:</h3>
+            <h3 class="total"></h3>
 
         </div>
     </main>
@@ -81,7 +74,7 @@
         // console.log(user)
 
         let data = localStorage.setItem(`${num}`, JSON.stringify(expense_All));
-        
+        // console.log(expense_All.filter(score => score > 50));
 
 
         document.querySelector(".name").value = "";
@@ -103,11 +96,13 @@
             row.innerHTML = ` 
                         <td><span class="numvalue">${num}</span></td>
                         <td>${element.name}</td>
-                        <td>${element.amount}</td>
+                        <td class="amount">${element.amount}</td>
                         <td>${element.category}</td>
                         <td>${element.date}</td>
                         <td><a class="editbtn"><i class="fa-solid fa-pen"></i></a><a class="deletebtn"><i class="fa-solid fa-trash"></i></a></td> 
                      `;
+                    
+
                     lists.append(row)
 
                     //   let edit = document.querySelector(".editbtn")
@@ -156,6 +151,17 @@
 
 
        });
+
+       let total = 0;
+
+       let total_All = document.querySelectorAll(".amount"); // Get all amount cells
+       console.log(total_All)
+       total_All.forEach(value => {
+                console.log(value)
+                total += Number(value.innerText);
+});
+
+let total_div = document.querySelector(".total").innerText = `Total: ${total}`
 
       
 
