@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="main">
+        <form action="" id="expense_tracker_form">
+            <input type="text" class="name" placeholder="Enter expense name" name="name">
+            <input type="number" class="amount" placeholder="Enter Amount" name="expense">
+            <select id="expense-category" class="expensecat" >
+                <option value="category">category</option>
+                <option value="Travel">Travel</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="submit" id="submitbtn" name="submit" value="Submit">
+        </form>
+        <div class="row">
+            <div class="selectOption">
+                <div class="selectElement">
+                    <input type="checkbox" id="selectChecked" name="">
+                    <label for="selectChecked">Select All</label>
+                </div>
+                <div class="deleteElement">
+                    <a class="deleteBtn" href="#"> Delete</a>
+                </div>
+            </div>
+            <div class="searchBox">
+                <input type="text" name="search" placeholder="Search Name.." class="searchName">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="expense-data">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Expense Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="all-list">
+                    
+                </tbody>
+            </table>
+        </div>
+    </main>
+<script>
+    let form = document.getElementById("expense_tracker_form").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        let expense_name = document.querySelector(".name").value;
+        let expense_amount = document.querySelector(".amount").value;
+        let expense_category = document.querySelector(".expensecat").value;
+
+
+        let expense_All = [{name : expense_name , amount : expense_amount , category : expense_category}];
+
+        // expense_All.forEach(ele => {
+        //     console.log(ele)
+        //     let data = localStorage.setItem("user", JSON.stringify(ele));
+
+        // })
+        let data = localStorage.setItem("user", JSON.stringify(expense_All));
+
+        document.querySelector(".name").value = "";
+        document.querySelector(".amount").value = "";
+        document.querySelector(".expensecat").value = "";
+
+       let lists = document.getElementById("all-list");
+       console.log(lists)
+
+       let getlist = localStorage.getItem("user");
+
+       let str = JSON.parse(getlist);
+
+
+       str.forEach(element => {
+            lists.innerHTML = ` 
+                    <tr>
+                        <td><input id="label-'+countElement+'" type="checkbox"><label for="label-'+countElement+'"></label></td>
+                        <td>${element.name}</td>
+                        <td>${element.amount}</td>
+                        <td>${element.category}</td>
+                        <td><a class="editbtn"><i class="fa-solid fa-pen"></i></a><a class="deletebtn"><i class="fa-solid fa-trash"></i></a></td> 
+                    </tr>`
+
+                    
+                        let edit = document.querySelector(".editbtn")
+                        edit.addEventListener("click", function(){
+                            document.querySelector(".name").value = `${element.name}`;
+                            document.querySelector(".amount").value = `${element.amount}`;
+                            document.querySelector(".expensecat").value = `${element.category}`;
+
+
+                    });
+
+                       document.querySelector(".deletebtn").addEventListener("click", function(){
+                           localStorage.removeItem("user")
+                       })
+
+
+       });
+
+
+   })
+</script>
+</body>
+</html>

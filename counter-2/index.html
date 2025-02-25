@@ -36,32 +36,70 @@
 <body>
     <div class="main">
         <div class="counter_box">
-            <h1 >0</h1>
+            <h1 class="num">0</h1>
         </div>
         <div class="counter_box">
-            <h1 >0</h1>
+            <h1 class="num">0</h1>
         </div>
         <div class="counter_box">
-            <h1 >0</h1>
+            <h1 class="num">0</h1>
         </div>
     </div>
-
+<!-- 
     <script>
-        let counter = document.querySelectorAll(".counter_box h1");
-        console.log(counter)
 
         let value = [1000, 2000, 3000];
+        
 
-        counter.forEach(element => {
-             console.log(element.innerText);
+        value.forEach(element => {
+            //  console.log(element.innerText);
 
-             let current = 0;
+            //  setInterval()
+            //  let current = 0;
 
-             let final_value = value[element];
-             console.log(final_value)
+            //  let final_value = value[element];
+            //  console.log(final_value)
 
-             let speed = final_value / 100;
+            //  let speed = final_value / 100;
+
+           
+
+                setInterval(time, 10)
+                element.innerText = value
+
+               
+                
+
+
+            function time(){
+                // for(let i = 0; i <)
+                // element.innerText++;
+                for(let i = 0; i < 3; i++){
+                    let counter = document.querySelector[i](".counter_box h1").innerText = value[i]
+
+                console.log("val " + value[i]);
+                element.innerText = value[i];
+                }
+                
+            }
+            
         });
+
+        
+    </script> -->
+
+    <script>
+        let value = [1000, 2000, 3000];
+        let box = document.querySelector(".num");
+        // console.log(box)
+
+
+        value.forEach(ele => {
+            console.log(ele)
+            
+ 
+        });
+
     </script>
 </body>
 </html>

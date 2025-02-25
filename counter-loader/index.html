@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+   }
+   .loader{
+     background-color: black;
+     color: white;
+     width: 100%;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     top: 0;
+     left: 0;
+     opacity: 1;
+
+   }
+   .spin{
+       border-radius: 50%;
+       height: 30px;
+       width: 30px;
+       border-style: dotted;
+       border-width: 3px;
+       border-top-color: white;
+       border-left-color: rgb(58, 58, 58);
+       border-bottom-color: rgb(58, 58, 58);
+       animation: spin 2s linear infinite;
+   }
+
+
+    .main{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+    }
+     .num{
+        font-size: 50px;
+    }
+
+   
+
+    @keyframes spin{
+        0% {transform: rotate(0deg);
+            border-right-color: rgb(255, 255, 255);
+            border-bottom-color: rgb(58, 58, 58);
+            border-top-color: rgb(255, 255, 255);
+            border-left-color: rgb(58, 58, 58);
+        }
+        100%{transform: rotate(360deg);
+        /* border-right-color: rgb(58, 58, 58); */
+        border-bottom-color: white;
+        /* border-top-color: rgb(58, 58, 58); */
+        border-left-color: white;
+
+    }
+    }
+</style>
+<body>
+    <div class="loader">
+        <div class="spin">
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <h1 class="num" data-count="1000">0</h1>
+        </div>
+        <div class="container">
+            <h1 class="num" data-count="3000">0</h1>
+        </div>
+        <div class="container">
+            <h1 class="num" data-count="5000">0</h1>
+        </div>
+    </div>
+<script>
+    let number = document.querySelectorAll(".num");
+    console.log(number);
+
+
+    setTimeout(() => {
+    number.forEach(ele => {
+       let target_value = +ele.dataset.count;
+       ele.innerText = target_value;
+    
+       let current_num = 0;
+
+       let speed = target_value / 200;
+
+       function mynumber(){
+        if(current_num < target_value){
+            current_num += Math.floor(speed);
+             ele.innerText = current_num;
+        }
+       }
+    
+
+       setInterval(mynumber, 5)
+    });
+}, 3000);
+
+    //loader script
+
+    window.onload = function(){
+        let spin = document.querySelector(".loader");
+        
+        setTimeout(() => {
+            spin.style.opacity = 0;
+            setTimeout(() => {
+                spin.style.display = none;
+            }, 5000)
+        }, 3000);
+    }
+
+
+</script>
+</body>
+</html>
