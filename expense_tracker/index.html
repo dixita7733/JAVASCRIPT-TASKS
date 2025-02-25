@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>expense_tracker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -13,11 +13,12 @@
             <input type="text" class="name" placeholder="Enter expense name" name="name">
             <input type="number" class="amount" placeholder="Enter Amount" name="expense">
             <select id="expense-category" class="expensecat" >
-                <option value="category">category</option>
+                <option value="category" selected>category</option>
                 <option value="Travel">Travel</option>
                 <option value="Shopping">Shopping</option>
                 <option value="Other">Other</option>
-            </select>
+            </select>   
+            <input type="date" class="expense-data">
             <input type="submit" id="submitbtn" name="submit" value="Submit">
         </form>
         <div class="row">
@@ -42,71 +43,121 @@
                         <th>Expense Name</th>
                         <th>Amount</th>
                         <th>Category</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="all-list">
                     
                 </tbody>
+
             </table>
+            <h3 class="total">Total:</h3>
+
         </div>
     </main>
 <script>
+    let num = 0;
+    let array_num = [];
+
     let form = document.getElementById("expense_tracker_form").addEventListener("submit", function(e){
+        num++;
+
+        array_num.push(num);
+        console.log(array_num)
         e.preventDefault();
 
         let expense_name = document.querySelector(".name").value;
         let expense_amount = document.querySelector(".amount").value;
         let expense_category = document.querySelector(".expensecat").value;
+        let expense_date = document.querySelector(".expense-data").value;
 
 
-        let expense_All = [{name : expense_name , amount : expense_amount , category : expense_category}];
+        let expense_All = [{name : expense_name , amount : expense_amount , category : expense_category, date : expense_date}];
 
-        // expense_All.forEach(ele => {
-        //     console.log(ele)
-        //     let data = localStorage.setItem("user", JSON.stringify(ele));
+        // let num = 1;
 
-        // })
-        let data = localStorage.setItem("user", JSON.stringify(expense_All));
+        // let user = [num];
+        // console.log(user)
+
+        let data = localStorage.setItem(`${num}`, JSON.stringify(expense_All));
+        
+
 
         document.querySelector(".name").value = "";
         document.querySelector(".amount").value = "";
-        document.querySelector(".expensecat").value = "";
+        document.querySelector(".expense-data").value = "";
+
 
        let lists = document.getElementById("all-list");
        console.log(lists)
 
-       let getlist = localStorage.getItem("user");
+       let getlist = localStorage.getItem(`${num}`);
+    //    let get_num = num;
+       console.log(num)
 
        let str = JSON.parse(getlist);
 
-
+       let row = document.createElement("tr");
        str.forEach(element => {
-            lists.innerHTML = ` 
-                    <tr>
-                        <td><input id="label-'+countElement+'" type="checkbox"><label for="label-'+countElement+'"></label></td>
+            row.innerHTML = ` 
+                        <td><span class="numvalue">${num}</span></td>
                         <td>${element.name}</td>
                         <td>${element.amount}</td>
                         <td>${element.category}</td>
+                        <td>${element.date}</td>
                         <td><a class="editbtn"><i class="fa-solid fa-pen"></i></a><a class="deletebtn"><i class="fa-solid fa-trash"></i></a></td> 
-                    </tr>`
+                     `;
+                    lists.append(row)
 
+                    //   let edit = document.querySelector(".editbtn")
+                    //     edit.addEventListener("click", function(){
+                    //         document.querySelector(".name").value = ${element.name};
+                    //         document.querySelector(".amount").value = ${element.amount};
+                    //         document.querySelector(".expensecat").value = ${element.category};
+ 
+
+                    // });
                     
-                        let edit = document.querySelector(".editbtn")
-                        edit.addEventListener("click", function(){
+                    let edit = document.querySelectorAll(".editbtn");
+
+                    edit.forEach((button) => {
+                        button.addEventListener("click", function() {
+                            let rowedit = this.closest("tr"); 
+
+                            let tds = rowedit.querySelectorAll("td"); 
+
+                            let expense_name = tds[1].innerText; 
+                            let expense_amount = tds[2].innerText; 
+                            let expense_category = tds[3].innerText; 
+
                             document.querySelector(".name").value = `${element.name}`;
                             document.querySelector(".amount").value = `${element.amount}`;
                             document.querySelector(".expensecat").value = `${element.category}`;
+                            num--;
+              });
+          });
 
 
-                    });
+                    let del = document.querySelectorAll(".deletebtn");
 
-                       document.querySelector(".deletebtn").addEventListener("click", function(){
-                           localStorage.removeItem("user")
-                       })
+                    del.forEach((button) => {
+                        button.addEventListener("click", function() {
+                        let row = this.closest("tr"); 
+                        let num_value = row.querySelector(".numvalue").innerText; 
+
+                        console.log("Deleting row with num:", num_value);
+
+                        localStorage.removeItem(num_value); 
+                        row.remove(); 
+              });
+          });
+
 
 
        });
+
+      
 
 
    })
