@@ -3,9 +3,6 @@
     padding: 0px;
     box-sizing: border-box;
 }
-.header-main{
-
-}
 .banner-img{
     height: auto;
     width: 100%;
@@ -113,7 +110,7 @@
   margin-right: 130px;
   margin-top: 60px;
 }
-.left-design{
+.bottom{
    background-image: url(images/bottom-bg-b.webp);
    height: 170px;
    width: 300px;
@@ -121,6 +118,19 @@
    border-radius: 20px;
    padding-left: 13px;
    padding-top: 20px;
+}
+.left-design{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding-left: 10px;
+}
+.right-design{
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  padding-left: 20px;
+  margin-top: 5px;
 }
 .de{
    color: white;
@@ -141,13 +151,114 @@
   padding: 15px;
   margin-top: 12px;
   border-radius: 30px;
+  font-family: sans-serif;
 }
 .meta-bottom a{
   color: white;
   text-decoration: none;
-  
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  align-items: center ;
+  margin-left: 15px;
+}
+.exarrow{
+  margin-left: 25px;
+  background-color: rgb(255, 255, 255);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timg{
+  height: 45px;
+  border-radius: 50%;
+
+}
+.timgbox{
+  height: 55px;
+  width: 55px;
+  background-color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-color: white;
+  border-width: 5px;
+  margin-top: -10px;
+}
+.ad{
+  background-color: black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 300px;
+}
+.topad, .bottomad{
+  display: flex;
+  gap: 80px;
 }
 
+.topad img, .bottomad img{
+  filter: invert(20%);
+  height: 65px;
+}
+.main-title{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+.container-title {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.smallhead{
+  margin-bottom: -20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.top-title{
+  text-align: left;
+  padding-left: 70px;
+  line-height: 90px;
+}
+.title {
+  font-size: 95px;
+  font-weight: 700;
+}
+.outline {
+  font-size: 95px;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+.bottom-title{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.subtitle {
+  font-size: 40px;
+  margin-top: 20px;
+  text-align: right;
+  width: 50%;
+  padding-right: 30px;
+  margin-top: -30px;
+}
 
 
 

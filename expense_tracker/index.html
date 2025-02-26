@@ -9,7 +9,7 @@
 </head>
 <body>
     <main class="main">
-        <h1 class="head">Expense_tracker</h1>
+        <h1 class="head">Expense Tracker</h1>
         <form action="" id="expense_tracker_form">
             <input type="text" class="name" placeholder="Enter expense name" name="name">
             <input type="number" class="amount" placeholder="Enter Amount" name="expense">
@@ -48,8 +48,36 @@
             <h3 class="total"></h3>
 
         </div>
+
+         <!-- Modal -->
+         <div id="expenseModalContainer" class="modal-container">
+            <div class="modal-box">
+                <h3>Add Expense</h3>
+                <form id="expenseForm">
+                    <input type="text" class="input-field" placeholder="Expense name" id="name-modal">
+                    <input type="number" class="input-field" placeholder="Amount" id="amount-modal">
+                    <select class="dropdown-field" id="category-modal">
+                        <option value="category" selected>Category</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Other">Other</option>
+                    </select>   
+                    <input type="date" class="input-field" id="date-modal">
+                    <input type="submit" class="btn-submit" value="Submit" id="modal-submit">
+                </form>
+                <button class="btn-close" onclick="closeExpenseModal()">Close</button>
+            </div>
+        </div>
     </main>
 <script>
+
+function openExpenseModal() {
+            document.getElementById("expenseModalContainer").style.display = "flex";
+        }
+
+        function closeExpenseModal() {
+            document.getElementById("expenseModalContainer").style.display = "none";
+        }
     let num = 0;
     let array_num = [];
 
@@ -68,10 +96,6 @@
 
         let expense_All = [{name : expense_name , amount : expense_amount , category : expense_category, date : expense_date}];
 
-        // let num = 1;
-
-        // let user = [num];
-        // console.log(user)
 
         let data = localStorage.setItem(`${num}`, JSON.stringify(expense_All));
         // console.log(expense_All.filter(score => score > 50));
@@ -86,7 +110,7 @@
        console.log(lists)
 
        let getlist = localStorage.getItem(`${num}`);
-    //    let get_num = num;
+      let get_num = num;
        console.log(num)
 
        let str = JSON.parse(getlist);
@@ -99,49 +123,81 @@
                         <td class="amount">${element.amount}</td>
                         <td>${element.category}</td>
                         <td>${element.date}</td>
-                        <td><a class="editbtn"><i class="fa-solid fa-pen"></i></a><a class="deletebtn"><i class="fa-solid fa-trash"></i></a></td> 
+                        <td><a class="editbtn" onclick="openExpenseModal()"><i class="fa-solid fa-pen"></i></a><a class="deletebtn"><i class="fa-solid fa-trash"></i></a></td> 
                      `;
                     
 
                     lists.append(row)
-
-                    //   let edit = document.querySelector(".editbtn")
-                    //     edit.addEventListener("click", function(){
-                    //         document.querySelector(".name").value = ${element.name};
-                    //         document.querySelector(".amount").value = ${element.amount};
-                    //         document.querySelector(".expensecat").value = ${element.category};
- 
-
-                    // });
                     
-                    let edit = document.querySelectorAll(".editbtn");
+                   let edit = document.querySelectorAll(".editbtn");
 
-                    edit.forEach((button) => {
-                        button.addEventListener("click", function() {
-                            let rowedit = this.closest("tr"); 
+                   edit.forEach((button) => {
+                       button.addEventListener("click", function() {
+                           let rowedit = this.closest("tr"); 
 
-                            let tds = rowedit.querySelectorAll("td"); 
+                           let tds = rowedit.querySelectorAll("td"); 
 
-                            let expense_name = tds[1].innerText; 
-                            let expense_amount = tds[2].innerText; 
-                            let expense_category = tds[3].innerText; 
+                           let expense_name = tds[1].innerText; 
+                           let expense_amount = tds[2].innerText; 
+                           let expense_category = tds[3].innerText; 
+                           let expense_date = tds[4].innerText; 
 
-                            document.querySelector(".name").value = `${element.name}`;
-                            document.querySelector(".amount").value = `${element.amount}`;
-                            document.querySelector(".expensecat").value = `${element.category}`;
-                            num--;
-              });
-          });
+
+                           let modal_name =  document.querySelector("#name-modal").value = `${element.name}`;
+                           let modal_amount = document.querySelector("#amount-modal").value = `${element.amount}`;
+                           let modal_cat = document.querySelector("#category-modal").value = `${element.category}`;
+                           let modal_date = document.querySelector("#date-modal").value = `${element.date}`;
+
+                        //    num--;
+
+
+                        let modal_submit  = document.querySelector("#modal-submit");
+                        modal_submit.addEventListener("click", function(e){
+                            e.preventDefault();
+                            closeExpenseModal();
+
+                            modal_name =  document.querySelector("#name-modal").value 
+                            console.log(modal_name);
+                            modal_amount = document.querySelector("#amount-modal").value
+                            modal_cat = document.querySelector("#category-modal").value
+                            modal_date = document.querySelector("#date-modal").value 
+                           
+                            expense_name = tds[1].innerText = `${modal_name}`; 
+                            expense_amount = tds[2].innerText = `${modal_amount}`; 
+                            expense_category = tds[3].innerText = `${modal_cat}`; ; 
+                            expense_date = tds[4].innerText = `${modal_date }`; 
+                    
+
+                    lists.append(row)
+
+                    let total = 0;
+
+                    let total_All = document.querySelectorAll(".amount"); 
+                    console.log(total_All)
+                    total_All.forEach(value => {
+                         console.log(value)
+                         total += Number(value.innerText);
+                    });
+
+                   let total_div = document.querySelector(".total").innerText = `Total: ${total}` 
+                        })
+             });
+         });
 
 
                     let del = document.querySelectorAll(".deletebtn");
 
                     del.forEach((button) => {
                         button.addEventListener("click", function() {
-                        let row = this.closest("tr"); 
-                        let num_value = row.querySelector(".numvalue").innerText; 
+                        // let row = this.closest("tr"); 
 
-                        console.log("Deleting row with num:", num_value);
+                        // let tds = row.querySelectorAll("td"); 
+
+                        // var amount_Del = tds[2].innerText; 
+                        // document.write(amount_Del)
+
+
+                        let num_value = row.querySelector(".numvalue").innerText; 
 
                         localStorage.removeItem(num_value); 
                         row.remove(); 
@@ -149,24 +205,22 @@
           });
 
 
-
        });
 
        let total = 0;
 
-       let total_All = document.querySelectorAll(".amount"); // Get all amount cells
-       console.log(total_All)
-       total_All.forEach(value => {
-                console.log(value)
-                total += Number(value.innerText);
+let total_All = document.querySelectorAll(".amount"); 
+console.log(total_All)
+total_All.forEach(value => {
+    
+         console.log(value)
+         total += Number(value.innerText);
 });
 
-let total_div = document.querySelector(".total").innerText = `Total: ${total}`
-
-      
-
+let total_div = document.querySelector(".total").innerText = `Total: ${total}`   
 
    })
+
 </script>
 </body>
 </html>
